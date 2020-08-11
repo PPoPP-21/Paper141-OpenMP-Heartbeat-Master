@@ -40,7 +40,6 @@
 #include <math.h>
 #if defined(_OPENMP)
 #include <omp.h>
-#include "e4c_lite.h"
 #include "Heartbeat_Support_OpenMP.h" 
 #include<sys/time.h>
 #endif /* _OPENMP */
@@ -315,7 +314,7 @@ c-------------------------------------------------------------------*/
 
   timer_clear(1);
   timer_start(1);
-#pragma omp parallel private(step) num_threads(8)
+#pragma omp parallel private(step) num_threads(4)
   {  
   for (step = 1; step <= niter; step++) {
     if (step % 20 == 0 || step == 1) {
@@ -351,9 +350,7 @@ c-------------------------------------------------------------------*/
 		  verified, NPBVERSION, COMPILETIME, CS1, CS2, CS3, CS4, CS5, 
 		  CS6, "(none)");
 
-//************************************
-    L_Heartbeat_OpenMP_Finished();
-//************************************
+  L_Heartbeat_OpenMP_Finished();
 
 
 }
@@ -376,7 +373,7 @@ c-------------------------------------------------------------------*/
       for (j = 1; j <= grid_points[1]-2; j++) {
 	for (k = 1; k <= grid_points[2]-2; k++) {
 	  u[m][i][j][k] = u[m][i][j][k] + rhs[m][i][j][k];
-	}
+  }
       }
     }
   }
@@ -401,6 +398,10 @@ static void adi(void) {
   z_solve();
 
   add();
+
+  //************************************
+
+  //************************************
 }
 
 /*--------------------------------------------------------------------
@@ -461,19 +462,9 @@ static void rhs_norm(double rms[5]) {
     rms[m] = 0.0;
   }
 
-
-  int loopnum=0;
   for (i = 0; i <= grid_points[0]-2; i++) {
     for (j = 0; j <= grid_points[1]-2; j++) {
-	   
-	   malloc(10.24);
-	   int iter=i*j;
-	        //printf("%d\n",i);
-	    L_Heartbeat_OpenMP_Generate(omp_get_thread_num(),loopnum,iter);                      
-	    L_Heartbeat_OpenMP_Monitor(iter,loopnum); 
-
-
-      for (k = 0; k <= grid_points[2]-2; k++) {
+  for (k = 0; k <= grid_points[2]-2; k++) {
 	for (m = 0; m < 5; m++) {
 	  add = rhs[m][i][j][k];
 	  rms[m] = rms[m] + add*add;
@@ -1546,7 +1537,11 @@ c-------------------------------------------------------------------*/
       for (j = 0; j <= grid_points[1]-1; j++) {
 	for (k = 0; k <= grid_points[2]-1; k++) {
 	  rhs[m][i][j][k] = forcing[m][i][j][k];
-	}
+	
+  
+  
+  
+  }
       }
     }
   }
@@ -2542,6 +2537,10 @@ c      perform the Thomas algorithm; first, FORWARD ELIMINATION
 #pragma omp for
     for (j = 1; j <= grid_points[1]-2; j++) {
       for (k = 1; k <= grid_points[2]-2; k++) {
+
+      	malloc(10.24);
+        int iter=i*k*j;
+        L_Heartbeat_OpenMP_Generate(omp_get_thread_num(),1,iter); 
 	fac1               = 1./lhs[n+2][i][j][k];
 	lhs[n+3][i][j][k]   = fac1*lhs[n+3][i][j][k];
 	lhs[n+4][i][j][k]   = fac1*lhs[n+4][i][j][k];
@@ -2689,6 +2688,9 @@ c                         BACKSUBSTITUTION
 	n = (m-3+1)*5;
 	rhs[m][i][j][k] = rhs[m][i][j][k] -
 	  lhs[n+3][i][j][k]*rhs[m][i1][j][k];
+     
+     
+     
       }
     }
   }
@@ -2703,11 +2705,12 @@ c      The first three factors
 #pragma omp for
     for (m = 0; m < 3; m++) {
       for (j = 1; j <= grid_points[1]-2; j++) {
-	for (k = 1; k <= grid_points[2]-2; k++) {
+	      for (k = 1; k <= grid_points[2]-2; k++) {
 	  rhs[m][i][j][k] = rhs[m][i][j][k] - 
 	    lhs[n+3][i][j][k]*rhs[m][i1][j][k] -
 	    lhs[n+4][i][j][k]*rhs[m][i2][j][k];
-	}
+
+  }
       }
     }
   }
