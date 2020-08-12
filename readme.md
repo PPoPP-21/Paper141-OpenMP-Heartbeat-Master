@@ -22,7 +22,7 @@ RAM: 7.7GiB
 
 Processor: Inter Core i5-4210H CPU @ 2.90GHz x 4
 
-Operating system bit: 64位
+Operating system bit: 64-bit
 
 GCC version: 9.3.0
 
