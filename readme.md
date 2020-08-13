@@ -16,11 +16,11 @@ The main purpose of this program is to generate the heart rate of the correspond
 
 ## 1.2 Operating environment
 
-Operating system: ubuntu 16.04 LTS
+Operating system: Ubuntu 16.04 LTS
 
 RAM: 7.7GiB
 
-Processor: Inter Core i5-4210H CPU @ 2.90GHz x 4
+Processor: Standard S2.LARGE8 v4 CPU
 
 Operating system bit: 64-bit
 
