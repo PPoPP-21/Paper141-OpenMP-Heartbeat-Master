@@ -162,7 +162,7 @@ Based on malloc dynamic memory creation, memory is created multiple times in a d
  malloc(10.24)
 ```
 ### 2.5.3 Shutdown
-Based on the exit() abnormal exit function, the phenomenon of sudden interruption when the program thread is running is created.
+Based on the exit() abnormal exit function, the case of sudden interruption when the program thread is running is created.
 
 exit(1) means abnormal exit, some prompt information can be given before exit, or the cause of the error can be observed in the debugger.
 
