@@ -1,7 +1,7 @@
 # 1 Introduction
-## 1.1 The introduction of file
+## 1.1 Description
 
-The main purpose of this program is to generate the heart rate of the corresponding thread in real time based on the OPENMP multi-threaded task. In addition to generating normal thread heart rate, this program can artificially construct thread heart rate changes in abnormal conditions (Shutdown, Memory leaks). The following table is a simple program introduction and the e4c library(e4c_lite.h and e4c_lite.o) is an open-source and transplanted exception handling framework based on the C language, you get the detail from [this](https://github.com/guillermocalvo/exceptions4c).
+The main purpose of this program is to generate the heart rate of the corresponding thread in real time based on the OpenMP multi-threaded tasks. In addition to generating normal thread heart rate, this program can artificially adjust thread heart rate changes in abnormal conditions (Shutdown, Memory leaks). The following table is a simple program description. The e4c library (e4c_lite.h and e4c_lite.o), an open-source related with exceptions, is invoked in our some cases, you can get the detail from [this](https://github.com/guillermocalvo/exceptions4c).
 
 | Filename | Description |
 |:----|:----|
@@ -35,7 +35,7 @@ gcc --version
 # 2 Manual
 
 ## 2.1 Obtain the target file
-When generating the target file, we need to define the number of checking threads and thread cycle and the content can be found in the Heartbeat_Support_OpenMP.h file. This experiment uses 4 threads with a frequency of 1000 as an example.
+When generating the target file, we need to define the number of checking threads and thread cycle and the content can be found in the Heartbeat_Support_OpenMP.h file. This experiment uses 4 threads when the frequency is adjusted at 1000 as an example.
 
 ```
 #define NUM_THREADS 4
@@ -75,7 +75,7 @@ Find the main() function and place the initialization program under the main() f
 //**************************************
 ```
 ### 2.2.3 Add heartbeat generation and detection functions
-In a double loop structure in the OPENMP environment in the program, embed the following code:
+In a double loop structure in the OpenMP environment, embed the following code:
 
 ```
 # Initialize a loopnum variable and place it outside the double loop
@@ -154,7 +154,7 @@ The specific data is shown in the table below, which is the result of 2020-00.xl
 No treatment.
 
 ###  2.5.2 Memory leak
-Based on malloc dynamic memory creation, memory is created multiple times in a double loop, causing memory leakage.
+Based on malloc dynamic memory creation, memory is created multiple times in a double loop, causing memory leak.
 
 ```
 # Location: Execution file, such as in sp_string of NPB
