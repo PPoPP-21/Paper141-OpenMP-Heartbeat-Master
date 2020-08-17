@@ -1,7 +1,7 @@
 # 1 Introduction
 ## 1.1 The introduction of file
 
-The main purpose of this program is to generate the heart rate of the corresponding thread in real time based on the OPENMP multi-threaded task. In addition to generating normal thread heart rate, this program can artificially construct thread heart rate changes in abnormal conditions (Shutdown, Memory leaks). The following table is a simple program introduction.
+The main purpose of this program is to generate the heart rate of the corresponding thread in real time based on the OPENMP multi-threaded task. In addition to generating normal thread heart rate, this program can artificially construct thread heart rate changes in abnormal conditions (Shutdown, Memory leaks). The following table is a simple program introduction and the e4c library(e4c_lite.h and e4c_lite.o) is an open-source and transplanted exception handling framework based on the C language, you get the detail from [this](https://github.com/guillermocalvo/exceptions4c).
 
 | Filename | Description |
 |:----|:----|
