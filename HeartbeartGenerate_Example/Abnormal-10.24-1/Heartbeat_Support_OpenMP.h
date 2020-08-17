@@ -1,11 +1,3 @@
-/* 
- * File:   Heartbeat_Support_OpenMP.h 
- * version: ver2.0
- * Author: Weidong Wang
- * Created on November 29, 2014, 1:19 PM
- * reviesed on March 9, 2020, 10:22 AM
- */
-
 #ifndef HEARTBEAT_SUPPORT_OPENMP_H
 #define	HEARTBEAT_SUPPORT_OPENMP_H
 #define NUM_THREADS 4
