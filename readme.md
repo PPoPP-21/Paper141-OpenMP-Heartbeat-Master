@@ -35,7 +35,7 @@ gcc --version
 # 2 Manual
 
 ## 2.1 Obtain the Target File
-When generating the target file, we need to define the number of checking threads and thread cycle and the content can be found in the Heartbeat_Support_OpenMP.h file. This experiment uses 4 threads when the frequency is adjusted at 1000 as an example.
+When generating the target file, we need to define the number of threads and the heartbeat frequency that means how many iterations it can generate a heartbeat.  The initial value of those parameters can be found in the Heartbeat_Support_OpenMP.h file.
 
 ```
 #define NUM_THREADS 4
