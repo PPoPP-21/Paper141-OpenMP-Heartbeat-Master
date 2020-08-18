@@ -42,7 +42,7 @@ When generating the target file, we need to define the number of threads and the
 #define HEART_FREQUENCY 1000
 ```
 
-In the source file, run the following command to get **Heartbeat_Support_OpenMP.o** file
+In the source file, run the following command to get **Heartbeat_Support_OpenMP.o** file.
 
 ```
 bash exec.sh
@@ -59,7 +59,7 @@ Open a benchmark program, such as sp_single program. Put the required API progra
 ![](./img/2.png)
 
 ### 2.2.1 Import API
-Open sp_single.c file and add function reference library
+Open sp_single.c file and add function reference library.
 
 ```
 #include "e4c_lite.h"
@@ -75,7 +75,7 @@ Find the main() function and place the initialization program in the main() func
 //**************************************
 ```
 ### 2.2.3 **Heartbeat Generation** Functions
-In a double loop structure in the OpenMP environment, inject the following code:
+In a double loop structure for the OpenMP applications, inject the following code:
 
 ```
 # Initialize a loop number variable and place it outside the double loop
@@ -104,7 +104,7 @@ Find the end of the main() function, and place the heartbeat detection end funct
 ```
 ## 2.3 Compilation
 ### 2.3.1  Compiler
-If you need to obtain the heartbeat information of sp_sing.c, you need to combine the target file running in 2.1 to perform joint compilation to obtain the executable file **sp_lab**, and then execute the script as follows
+If you want to obtain the heartbeat information of sp_sing.c, you can combine the target file running in 2.1 to perform joint compilation to obtain the executable file **sp_lab**, and then execute the script as follows.
 
 ```
 bash exec.sh
@@ -130,7 +130,7 @@ In addition, as the program runs, you can observe that the program is continuous
 
 ## 2.4 **Heartbeat** Records
 
-Execute the program process.py file to convert the results into .xlsx format for analysis and observation. The execution command is as follows.
+Execute the program process.py file to convert the results into .xlsx format for analysis and observation. The execution clause is as follows.
 
 ```
 python3 process.py
@@ -138,7 +138,7 @@ python3 process.py
 
 ![](./img/5_1.png)
 
-From the folder, you can see that the 2020-00.xlsx and 2020-01.xlsx files are generated, and they are converted from 2020-00 and 2020-01 through python.
+In the folder, you can see that the 2020-00.xlsx and 2020-01.xlsx files are generated, and they are converted from 2020-00 and 2020-01 through python.
 
 ![](./img/5_2.png)
 
@@ -154,7 +154,7 @@ The specific data is shown in the table below, which is the result of 2020-00.xl
 No treatment.
 
 ###  2.5.2 Memory Leak
-Based on malloc dynamic memory creation, memory is created multiple times in a double loop, causing memory leak.
+Based on the dynamic memory allocation, the memory is allocated multiple times, which results in a memory leak.
 
 ```
 # Location: Execution file, such as in sp_string of NPB
@@ -162,9 +162,9 @@ Based on malloc dynamic memory creation, memory is created multiple times in a d
  malloc(10.24)
 ```
 ### 2.5.3 Shutdown
-Based on the exit() abnormal exit function, the case of sudden interruption when the program thread is running is created.
+Based on the function exit(), the case of shutdown occurred when the program thread was running.
 
-exit(1) means abnormal exit, some prompt information can be given before exit, or the cause of the error can be observed in the debugger.
+The function exit(1) means abnormal exit. Some prompt information can be given before exit, or the cause of the error can be observed from the debugger.
 
 ```
 # Located in the heartbeat program Heartbeat_Support_OpenMP.c file
