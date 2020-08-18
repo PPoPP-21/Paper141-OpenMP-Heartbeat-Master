@@ -1,7 +1,7 @@
 # 1 Introduction
 ## 1.1 Description
 
-The main purpose of this program is to generate the heart rate of the corresponding thread at runtime based on the OpenMP multi-threaded tasks. In addition to generating normal thread heart rate, this program can artificially adjust thread heart rate changes in abnormal conditions (shutdown, memory leak). The following table is a simple program description. The e4c library (e4c_lite.h and e4c_lite.o), an open-source related with exceptions, is invoked in our some cases, you can get the detail from [here](https://github.com/guillermocalvo/exceptions4c).
+The main purpose of the source code is to generate the heart rate of the corresponding thread at runtime based on the OpenMP multi-threaded tasks. In addition to generating normal heartbeats, the program can also generate anomalous heartbeats in some abnormal conditions (shutdown and memory leak). The following table is a simple description. The e4c library (e4c_lite.h and e4c_lite.o), an open-source related with exceptions, is invoked in our some cases, and more details refer to [here](https://github.com/guillermocalvo/exceptions4c).
 
 | Filename | Description |
 |:----|:----|
